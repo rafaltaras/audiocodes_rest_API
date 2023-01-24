@@ -3,11 +3,6 @@ from lib.endpoints import config
 
 app = Flask(__name__)
 
-# ip = 
-# username = "Admin"
-# password = "Admin"
-
-
 @app.route("/", methods=["GET"])
 def mainpage():
     data = request.args
@@ -15,7 +10,8 @@ def mainpage():
         ip = data.get('ip')
         username = data.get('username')
         password = data.get('password')
-        conf = config.get_config(ip, username, password)
+        conf = config.download_config(ip, username, password)
+        print(conf)
     return render_template("mainpage.html")
     
 
