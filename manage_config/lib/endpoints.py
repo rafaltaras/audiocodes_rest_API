@@ -37,9 +37,7 @@ class Config:
     def read_ini(self, file_name): 
         config = configparser.ConfigParser()
         config.sections()
-        config.read(f"C:\\project\\audc_config_rest_api\\backups\\{file_name}.ini")
+        config.read(file_name)
         return config.sections()
 
 config  = Config()
-
-config.read_ini(file_name = "6.204.12.8_2023-01-24")
