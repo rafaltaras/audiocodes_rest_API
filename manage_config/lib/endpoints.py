@@ -52,8 +52,8 @@ class Config:
         config.read(path)
         return config.sections()
 
-    def read_parameter_details(self, parameter):
-        for key, value in config[parameter].items():
+    def read_parameter_details(self, section):
+        for key, value in config['SYSTEM Params']:
             return key, value
 
 
