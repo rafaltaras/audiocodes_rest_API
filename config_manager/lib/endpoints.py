@@ -50,11 +50,10 @@ class Config:
         config = configparser.ConfigParser()
         config.sections()
         config.read(path)
-        return config.sections()
+        return config
 
-    def read_parameter_details(self, section):
-        for key, value in config['SYSTEM Params']:
-            return key, value
-
+    def read_parameter_details(self, path, section):
+        config = self.read_ini(path)
+        return config[section]
 
 config  = Config()

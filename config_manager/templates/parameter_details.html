@@ -1,0 +1,14 @@
+{% extends "index.html" %}
+{% block content %}
+
+<div class="row">
+  <div class="col-lg-12 text-center">
+      <h1 class="mt-5">Parameters Details</h1>
+  </div>
+</div>
+    <div class="col-lg-3 col-md-5 mb-4">
+      {% for parameter, value in parameter_details.items() %}
+      <a href="" class="">{{parameter, value}}</a>
+      {% endfor %}     
+    </div>
+{% endblock %}

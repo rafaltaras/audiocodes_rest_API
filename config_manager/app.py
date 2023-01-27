@@ -1,5 +1,6 @@
-from flask import Flask, render_template, request, url_for, redirect, flash
+from flask import Flask, render_template, request, url_for, redirect, flash, abort
 from lib.endpoints import config
+from lib.dto import dto
 
 app = Flask(__name__)
 
@@ -11,14 +12,17 @@ def mainpage():
     ip = data.get('ip')
     username = data.get('username')
     password = data.get('password')
-    path = config.download_config(ip, username, password)
-    sections = config.read_ini(path)
+
+    dto.config = config.download_config(ip, username, password)
+    sections = config.read_ini(dto.config)
     return render_template("config_details.html",sections=sections)
     
 @app.route("/parameter_details/<section>")
 def parameter_details(section):
-    parameter_details = config.read_parameter_details(section)
-    return render_template("parameter_details.html")
+    if not dto.config:
+        abort(404)
+    parameter_details = config.read_parameter_details(dto.config, section)
+    return render_template("parameter_details.html", parameter_details=parameter_details)
   
 
 if __name__ == '__main__':
