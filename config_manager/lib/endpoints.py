@@ -1,9 +1,6 @@
-import requests
-import datetime
-import sys
-import os
-import base64
-import configparser
+import datetime, os, base64, configparser, requests
+from docx import Document
+from docx.shared import Inches
 
 class Config:
     def __init__(self):
@@ -21,7 +18,7 @@ class Config:
 
     def make_filepath(self, ip, folderpath):
         dt = str(datetime.datetime.now())
-        filepath = folderpath + ip + "_" + dt[:10] + ".ini"
+        filepath = folderpath + ip + "_" + dt[:10] 
         return filepath
     
     def get_url_ini_file(self, ip):
@@ -42,6 +39,7 @@ class Config:
         if response.status_code != 200:
             print("Backup filed: ", response.status_code)
             return None
+        filepath = filepath + ".ini"
         with open(filepath, "w") as f:
             f.write(response.text)
         return filepath
@@ -55,5 +53,12 @@ class Config:
     def read_parameter_details(self, path, section):
         config = self.read_ini(path)
         return config[section]
+
+    def create_docx_file(self, ip):
+        document = Document()
+        folderpath = self.ensure_path("./backups/")        
+        filepath = self.make_filepath(ip, folderpath)
+        document.save(f'{filepath}'+'.docx')
+        return None
 
 config  = Config()

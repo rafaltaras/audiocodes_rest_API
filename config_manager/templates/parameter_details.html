@@ -13,15 +13,13 @@
   </thead>
   <tbody>
     {% for parameter, value in parameter_details.items() %}
-    <tr>
-      <th scope="row">{{parameter}}</th>
-      <td>{{value}}</td>
-    </tr>
+      <tr>
+        <th scope="row">{{parameter}}</th>
+        <td>{{value}}</td>
+      </tr>
     {% endfor %} 
   </tbody>
 </table>
-
-
 {% endblock %}
 
 <thead>

@@ -14,8 +14,9 @@ def mainpage():
     password = data.get('password')
 
     dto.config = config.download_config(ip, username, password)
-    sections = config.read_ini(dto.config)
-    return render_template("config_details.html",sections=sections)
+    dto.sections = config.read_ini(dto.config)
+    config.create_docx_file(ip)
+    return render_template("config_details.html",sections=dto.sections)
     
 @app.route("/parameter_details/<section>")
 def parameter_details(section):
