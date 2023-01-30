@@ -23,7 +23,7 @@ def parameter_details(section):
         abort(404)
     parameter_details = config.read_parameter_details(dto.config, section)
     param_details = config.create_ini_dict(parameter_details)
-    return render_template("parameter_details.html", param_details=param_details)
+    return render_template("parameter_details.html", param_details=param_details, section=section)
   
 
 if __name__ == '__main__':
