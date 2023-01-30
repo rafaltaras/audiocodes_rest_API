@@ -12,7 +12,6 @@ def mainpage():
     ip = data.get('ip')
     username = data.get('username')
     password = data.get('password')
-
     dto.config = config.download_config(ip, username, password)
     dto.sections = config.read_ini(dto.config)
     config.create_docx_file(ip)
@@ -23,7 +22,8 @@ def parameter_details(section):
     if not dto.config:
         abort(404)
     parameter_details = config.read_parameter_details(dto.config, section)
-    return render_template("parameter_details.html", parameter_details=parameter_details)
+    param_details = config.create_ini_dict(parameter_details)
+    return render_template("parameter_details.html", param_details=param_details)
   
 
 if __name__ == '__main__':

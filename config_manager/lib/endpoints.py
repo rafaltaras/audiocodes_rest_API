@@ -1,6 +1,9 @@
-import datetime, os, base64, configparser, requests
+import datetime, os, base64, configparser, requests, json
 from docx import Document
 from docx.shared import Inches
+
+
+
 
 class Config:
     def __init__(self):
@@ -60,5 +63,11 @@ class Config:
         filepath = self.make_filepath(ip, folderpath)
         document.save(f'{filepath}'+'.docx')
         return None
+
+    def create_ini_dict(self, parameter_details):
+        param_details = {}
+        for k,v in parameter_details.items():
+            param_details.setdefault(k,v) 
+        return param_details
 
 config  = Config()

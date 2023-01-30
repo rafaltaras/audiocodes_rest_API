@@ -7,17 +7,17 @@
       <th scope="col">Section parameters</th>
     </tr>
     <tr>
-      <th scope="col">Parametr</th>
+      <th scope="col">Parameter</th>
       <th scope="col">Value</th>
     </tr>
   </thead>
   <tbody>
-    {% for parameter, value in parameter_details.items() %}
-      <tr>
-        <th scope="row">{{parameter}}</th>
-        <td>{{value}}</td>
-      </tr>
-    {% endfor %} 
+    {% for parameter, value in param_details.items() %}
+    <tr>
+      <th scope="row">{{parameter}}</th>
+      <td>{{value}}</td>
+    </tr>
+  {% endfor %} 
   </tbody>
 </table>
 {% endblock %}
