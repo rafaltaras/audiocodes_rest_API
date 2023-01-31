@@ -13,17 +13,19 @@
   </thead>
   <tbody>
     {% for key, value in param_details.items(): %}
-    {% if value|length > 1: %}
-        <tr>
-          <th scope="row">{{value}}</th>
-          <td>{{value}}</td>
-        </tr>
-    {% else: %}
-        <tr>
-          <th scope="row">{{key}}</th>
-          <td>{{value}}</td>
-        </tr>
-    {% endif %}
+      {% if value|length > 1: %}
+          <tr>
+            <th scope="row">{{key}}</th>
+                <tr>
+                  <td>{{value}}</td>
+                </tr>
+          </tr>
+      {% else: %}
+          <tr>
+            <th scope="row">{{key}}</th>
+            <td>{{value}}</td>
+          </tr>
+      {% endif %}
     {% endfor %} 
   </tbody>
 </table>
