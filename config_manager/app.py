@@ -4,6 +4,8 @@ from lib.dto import dto
 
 app = Flask(__name__)
 app.jinja_env.globals.update(isinstance=isinstance)
+app.jinja_env.globals.update(list=list)
+
 
 @app.route("/", methods=["GET"])
 def mainpage():

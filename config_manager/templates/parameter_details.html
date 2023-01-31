@@ -13,13 +13,14 @@
   </thead>
   <tbody>
     {% for key, value in param_details.items(): %}
-    {% if isinstance(value, list): %}
+    {% if value|length > 1: %}
         <tr>
+          <th scope="row">{{value}}</th>
           <td>{{value}}</td>
         </tr>
     {% else: %}
         <tr>
-          <th scope="row">{{parameter}}</th>
+          <th scope="row">{{key}}</th>
           <td>{{value}}</td>
         </tr>
     {% endif %}

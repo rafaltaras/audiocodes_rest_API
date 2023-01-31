@@ -67,6 +67,7 @@ class Config:
     def create_ini_dict(self, parameter_details):
         param_details = {}
         for k,v in parameter_details.items():
+            v = v.split(',')
             param_details.setdefault(k,v) 
         return param_details
 
