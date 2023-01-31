@@ -3,6 +3,7 @@ from lib.endpoints import config
 from lib.dto import dto
 
 app = Flask(__name__)
+app.jinja_env.globals.update(isinstance=isinstance)
 
 @app.route("/", methods=["GET"])
 def mainpage():
@@ -22,7 +23,9 @@ def parameter_details(section):
     if not dto.config:
         abort(404)
     parameter_details = config.read_parameter_details(dto.config, section)
+    print(type(parameter_details))
     param_details = config.create_ini_dict(parameter_details)
+    print(type(param_details))
     return render_template("parameter_details.html", param_details=param_details, section=section)
   
 

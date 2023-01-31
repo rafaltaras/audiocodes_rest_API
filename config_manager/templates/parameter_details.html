@@ -12,12 +12,18 @@
     </tr>
   </thead>
   <tbody>
-    {% for parameter, value in param_details.items() %}
-    <tr>
-      <th scope="row">{{parameter}}</th>
-      <td>{{value}}</td>
-    </tr>
-  {% endfor %} 
+    {% for key, value in param_details.items(): %}
+    {% if isinstance(value, list): %}
+        <tr>
+          <td>{{value}}</td>
+        </tr>
+    {% else: %}
+        <tr>
+          <th scope="row">{{parameter}}</th>
+          <td>{{value}}</td>
+        </tr>
+    {% endif %}
+    {% endfor %} 
   </tbody>
 </table>
 {% endblock %}
