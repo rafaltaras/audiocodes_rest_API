@@ -74,6 +74,7 @@ class Config:
         for k,v in parameter_details.items():
             v = v.split(',')
             param_details.setdefault(k,v) 
+        print(param_details)
         return param_details
 
 config  = Config()

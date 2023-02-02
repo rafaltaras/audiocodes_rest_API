@@ -4,26 +4,24 @@
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">{{section}}</th>
+      <th scope="col"><a href="" class="fs-3">Section - {{section}}</a></th>
     </tr>
     <tr>
-      <th scope="col">Parameter</th>
-      <th scope="col">Value</th>
+      <th scope=""><a href="" class="fs-4">Parameter</a></th>
+      <th scope=""><a href="" class="fs-4">Value</a></th>
     </tr>
   </thead>
   <tbody>
     {% for key, value in param_details.items(): %}
       {% if value|length > 1: %}
           <tr>
-            <th scope="row">{{key}}</th>
-                <tr>
-                  <td>{{value}}</td>
-                </tr>
+            <th scope="row"><a href="" class="fs-6">{{key}}</a></th>
+            <td><a href="" class="fs-6">{{value}}</a></td>
           </tr>
       {% else: %}
           <tr>
-            <th scope="row">{{key}}</th>
-            <td>{{value}}</td>
+            <th scope="row"><a href="" class="fs-6">{{key}}</a></th>
+            <td><a href="" class="fs-6">{{value}}</a></td>
           </tr>
       {% endif %}
     {% endfor %} 

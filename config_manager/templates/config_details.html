@@ -2,16 +2,17 @@
 {% block content %}
 
 
-    <table class="table">
+    <table class="table table-sm">
       <thead>
         <tr>
-          <th scope="col">Sections of configuration file</th>
+          <th scope="col"><a href="" class="fs-3">Sections of SBC configuration file</a></th>        
+          <th scope="col"><a href="" class="fs-3">IP address of SBC - {{ip}}</a></th>
         </tr>
       </thead>
       <tbody>
         {% for section in sections %}
         <tr>
-          <th scope="row"><a href="{{ url_for('parameter_details', section=section) }}" class="">{{section}}</a></th>
+          <th scope="row"><a href="{{ url_for('parameter_details', section=section) }}" class="fs-6">{{section}}</a></th>
         </tr>
         {% endfor %} 
       </tbody>

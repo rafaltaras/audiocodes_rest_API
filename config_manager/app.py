@@ -19,7 +19,7 @@ def mainpage():
     dto.sections = config.read_ini(dto.config)
     sections = config.filter_sections(dto.sections)
     config.create_docx_file(ip)
-    return render_template("config_details.html",sections=sections)
+    return render_template("config_details.html",sections=sections, ip=ip)
     
 @app.route("/parameter_details/<section>")
 def parameter_details(section):
