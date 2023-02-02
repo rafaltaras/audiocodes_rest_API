@@ -17,19 +17,17 @@ def mainpage():
     password = data.get('password')
     dto.config = config.download_config(ip, username, password)
     dto.sections = config.read_ini(dto.config)
+    sections = config.filter_sections(dto.sections)
     config.create_docx_file(ip)
-    return render_template("config_details.html",sections=dto.sections)
+    return render_template("config_details.html",sections=sections)
     
 @app.route("/parameter_details/<section>")
 def parameter_details(section):
     if not dto.config:
         abort(404)
     parameter_details = config.read_parameter_details(dto.config, section)
-    print(type(parameter_details))
     param_details = config.create_ini_dict(parameter_details)
-    print(type(param_details))
     return render_template("parameter_details.html", param_details=param_details, section=section)
   
-
 if __name__ == '__main__':
     app.run(debug=True)

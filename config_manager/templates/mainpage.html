@@ -8,17 +8,16 @@
   <div class="col-lg-12 mb-4">     
     <div class="col-lg-12 mb-4">
       <form>
-        <div class="form-group">
-          <label for="ip">IP address</label>
-          <input type="text" class="form-control" id="InputIP" aria-describedby="Help" placeholder="Enter IP address of SBC" name="ip" required>
-          <small id="emailHelp" class="form-text text-muted">IP v4</small>
-        </div>
-        <div class="form-group">
-          <label for="InputUsername">Username</label>
-          <input type="username" class="form-control" id="InputUsername" placeholder="Username" name="username" required>
-        </div>
-        <div class="form-group">
-            <label for="InputPassword">Password</label>
+          <div class="mb-3">
+            <label for="ip" class="form-label">IP address</label>
+            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter IP address of SBC" name="ip" required>
+          </div>
+          <div class="mb-3">
+            <label for="InputUsername" class="form-label">Username</label>
+            <input type="username" class="form-control" id="InputUsername" placeholder="Username" name="username" required>
+          </div>
+          <div class="mb-3">
+            <label for="InputPassword" class="form-label">Password</label>
             <input type="password" class="form-control" id="InputPassword" placeholder="Password" name="password" required>
           </div>
         <button type="submit" class="btn btn-primary">Submit</button>

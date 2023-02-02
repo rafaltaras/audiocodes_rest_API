@@ -1,8 +1,6 @@
-import datetime, os, base64, configparser, requests, json
+import datetime, os, base64, configparser, requests, json, re, string
 from docx import Document
 from docx.shared import Inches
-
-
 
 
 class Config:
@@ -52,6 +50,13 @@ class Config:
         config.sections()
         config.read(path)
         return config
+    
+    def filter_sections(self, config):
+        sections = []
+        for section in config.sections():
+            if not section.startswith(" \\"):
+                sections.append(section)
+        return sections
 
     def read_parameter_details(self, path, section):
         config = self.read_ini(path)
