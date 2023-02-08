@@ -1,7 +1,7 @@
 import datetime, os, base64, configparser, requests, json, re, string
 from docx import Document
+from docx.shared import Pt
 from docx.shared import Inches
-
 
 class Config:
     def __init__(self):
@@ -43,6 +43,7 @@ class Config:
         filepath = filepath + ".ini"
         with open(filepath, "w") as f:
             f.write(response.text)
+        print(filepath)
         return filepath
 
     def read_ini(self, path): 
@@ -62,10 +63,20 @@ class Config:
         config = self.read_ini(path)
         return config[section]
 
-    def create_docx_file(self, ip):
+    def create_docx_file(self, ip, path, sections):
         document = Document()
         folderpath = self.ensure_path("./backups/")        
         filepath = self.make_filepath(ip, folderpath)
+        paragraph = document.add_paragraph(f"Configuration of AudioCodes {ip}")
+        paragraph.style = document.styles['Heading 1']
+        for section in sections:
+            document.add_heading(section)
+            parameters_details = self.read_parameter_details(path, section)
+            for key, value in parameters_details.items():
+                table = document.add_table(rows=1, cols=2)
+                cells = table.rows[0].cells
+                cells[0].text = key
+                cells[1].text = value
         document.save(f'{filepath}'+'.docx')
         return None
 
@@ -74,7 +85,6 @@ class Config:
         for k,v in parameter_details.items():
             v = v.split(',')
             param_details.setdefault(k,v) 
-        print(param_details)
         return param_details
 
 config  = Config()

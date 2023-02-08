@@ -16,10 +16,11 @@ def mainpage():
     username = data.get('username')
     password = data.get('password')
     dto.config = config.download_config(ip, username, password)
-    dto.sections = config.read_ini(dto.config)
-    sections = config.filter_sections(dto.sections)
-    config.create_docx_file(ip)
-    return render_template("config_details.html",sections=sections, ip=ip)
+    path = dto.config
+    all_sections = config.read_ini(path)
+    filtered_sections = config.filter_sections(all_sections)
+    config.create_docx_file(ip,path,filtered_sections)
+    return render_template("config_details.html",sections=filtered_sections, ip=ip)
     
 @app.route("/parameter_details/<section>")
 def parameter_details(section):
