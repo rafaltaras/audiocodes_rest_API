@@ -1,0 +1,21 @@
+{% extends "index.html" %}
+{% block content %}
+
+<body>
+<br>
+<h2>SBC IP address - {{ip}}</h2>
+<p>
+<i>Select the section you want to check</i>
+</p>
+
+<body class="list-group">
+  <h2>{% for section in sections %}</h2>
+    <ul>
+      <li scope="row"><a href="{{ url_for('config_details', section=section) }}" class="list-group-item">{{section}}</a></li>
+    </ul>
+    {% endfor %} 
+</body>
+
+</body>
+
+{% endblock %}

@@ -3,9 +3,6 @@ from lib.endpoints import config
 from lib.dto import dto
 
 app = Flask(__name__)
-# app.jinja_env.globals.update(isinstance=isinstance)
-# app.jinja_env.globals.update(list=list)
-
 
 @app.route("/", methods=["GET"])
 def mainpage():
@@ -20,15 +17,23 @@ def mainpage():
     all_sections = config.read_ini(path)
     filtered_sections = config.filter_sections(all_sections)
     config.create_docx_file(ip,path,filtered_sections)
-    return render_template("config_details.html",sections=filtered_sections, ip=ip)
+    return render_template("config_sections.html",sections=filtered_sections, ip=ip)
     
-@app.route("/parameter_details/<section>")
-def parameter_details(section):
+@app.route("/config_details/<section>")
+def config_details(section):
     if not dto.config:
         abort(404)
     parameter_details = config.read_parameter_details(dto.config, section)
-    param_details = config.create_ini_dict(parameter_details)
-    return render_template("parameter_details.html", param_details=param_details, section=section)
+    config_details = config.create_ini_dict(parameter_details)
+    return render_template("config_details.html", config_details=config_details, section=section)
   
+@app.route("/certificate/")
+def certificate():
+    # data = request.args
+    # ip = data.get('ip')
+    # username = data.get('username')
+    # password = data.get('password')
+    return "to be done"
+
 if __name__ == '__main__':
     app.run(debug=True)

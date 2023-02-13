@@ -1,13 +1,12 @@
 {% extends "index.html" %}
 {% block content %}
 
-<div class="row">
+
   <div class="col-lg-12 text-center">
-      <h1 class="mt-5">AUDIOCODES CONFIGURATION FILE</h1>
+      <h1 class="mt-5">MANAGE AUDIOCODES CONFIGURATION</h1>
   </div>
-  <div class="col-lg-12 mb-4">     
-    <div class="col-lg-12 mb-4">
-      <form>
+
+        <form>
           <div class="mb-3">
             <label for="ip" class="form-label">IP address</label>
             <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter IP address of SBC" name="ip" required>
@@ -20,8 +19,20 @@
             <label for="InputPassword" class="form-label">Password</label>
             <input type="password" class="form-control" id="InputPassword" placeholder="Password" name="password" required>
           </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>    
-    </div>
+
+          <div class="btn-group btn-group-toggle">
+            <form action="/">
+              <button  class="btn btn-primary btn-sm" type="submit">Check configuration</button>
+            </form> 
+            <form action="/certificate">
+              <button class="btn btn-primary btn-sm" type="submit">Check certificate</button>
+            </form>
+            <form action="/license">
+              <button class="btn btn-primary btn-sm" type="submit">Check license</button>
+            </form>
+          </div>
+        </form>
+
+
     
 {% endblock %}
