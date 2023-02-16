@@ -33,7 +33,19 @@ def certificate():
     # ip = data.get('ip')
     # username = data.get('username')
     # password = data.get('password')
-    return "to be done"
+    return "Option under construction"
+
+@app.route("/license/")
+def license():
+    return "Option under construction"
+
+@app.route("/alarms/")
+def alarms():
+    return "Option under construction"
+
+@app.route("/update/")
+def update():
+    return "Option under construction"
 
 if __name__ == '__main__':
     app.run(debug=True)
